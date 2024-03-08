@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import harvardArt from "./data/harvardArt.js";
 import GalleryNavigation from "./components/GalleryNavigation/index.js";
+import GalleryView from "./components/GalleryView/index.js"
 
 console.log(harvardArt);
 
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
           <h2>{`Harvard Art Museum`}</h2>
           <p>{`Look, but Don't Touch. Please select a Gallery in the navigation bar.`}</p>
         </>
+       },
+       {
+        path: "galleries/:galleryId",
+        element: <GalleryView galleries={harvardArt.records}/>
        },
       {
         path: "*",
