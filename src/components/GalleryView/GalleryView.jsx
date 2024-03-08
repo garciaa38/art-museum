@@ -1,22 +1,33 @@
 import { Navigate, useParams } from "react-router-dom";
+import ArtImageTile from "../ArtImageTile/index.js";
 
 export default function GalleryView({galleries}) {
 
     const { galleryId } = useParams();
-    console.log(galleryId);
+    console.log("GALLERY ID", galleryId);
 
     const currGallery = galleries.find(gallery => gallery.id === Number(galleryId));
-    console.log(currGallery);
+    console.log("CURRENT GALLERY", currGallery);
 
     if (!currGallery) {
         return <Navigate to="/" replace={true} />
     }
 
-    const {name} = currGallery
+    const {name, objects} = currGallery
+
+    console.log("OBJECTS", objects)
+
     return (
         <div>
             <h1>{`Hello from GalleryView`}</h1>
             <h2>{name}</h2>
+            {objects.map((art) => (
+                // console.log("ART OBJECT", art.images)
+                art.images.map((image) => (
+                    // console.log("IMAGE", image)
+                    <ArtImageTile key={image.baseimageurl} galleryId={galleryId} artId={image.imageid} {...image} />
+                ))
+             ))}
         </div>
     )
 }
