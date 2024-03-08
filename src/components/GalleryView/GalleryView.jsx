@@ -23,10 +23,7 @@ export default function GalleryView({galleries}) {
             <h2>{name}</h2>
             {objects.map((art) => (
                 // console.log("ART OBJECT", art.images)
-                art.images.map((image) => (
-                    // console.log("IMAGE", image)
-                    <ArtImageTile key={image.baseimageurl} galleryId={galleryId} artId={image.imageid} {...image} />
-                ))
+                <ArtImageTile key={art.id} artId={art.id} galleryId={galleryId} artUrl={art.primaryimageurl} {...art} />
              ))}
         </div>
     )

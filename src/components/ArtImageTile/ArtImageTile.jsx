@@ -1,10 +1,10 @@
 import {Link} from "react-router-dom"
 
-export default function ArtImageTile({ baseimageurl, galleryId, artId }) {
-    console.log("ART PROP", baseimageurl, galleryId, artId)
+export default function ArtImageTile({ artId, galleryId, artUrl }) {
+    
     return (
         <Link to={`/galleries/${galleryId}/art/${artId}`}>
-            <img src={baseimageurl} />
+            <img src={artUrl} />
         </Link>
     )
 }
